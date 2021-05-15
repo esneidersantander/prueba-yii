@@ -24,4 +24,21 @@ class StudentController extends Controller
          
         return $this->render('index', ['model' => $student]);
     }
+
+    public function actionEdit($id)
+    {
+        $model = Student::find()->where(['id' => $id])->one();
+ 
+        // $id not found in database
+        if($model === null){
+            throw new NotFoundHttpException('The requested page does not exist.');
+        }
+         
+        // update record
+        if($model->load(Yii::$app->request->post()) && $model->save()){
+            return $this->redirect(['index']);
+        }
+         
+        return $this->render('edit', ['model' => $model]);
+    }  
 }
