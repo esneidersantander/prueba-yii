@@ -11,6 +11,17 @@ class StudentController extends Controller
     {
         $model = new Student();
  
+        if($model->load(Yii::$app->request->post()) && $model->save()){
+            return $this->redirect(['index']);
+        }
+                 
         return $this->render('create', ['model' => $model]);
+    }
+
+    public function actionIndex()
+    {
+        $student = Student::find()->all();
+         
+        return $this->render('index', ['model' => $student]);
     }
 }
