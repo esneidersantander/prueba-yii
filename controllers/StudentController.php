@@ -3,10 +3,26 @@ namespace app\controllers;
  
 use Yii;
 use app\models\Student;
+use yii\filters\AccessControl;
 use yii\web\Controller;
  
 class StudentController extends Controller
 {  
+    public function behaviors()
+    {
+        return[
+            'access'=>[
+                'class'=>AccessControl::className(),
+                'rules'=>[
+                    [
+                        'allow'=>true,
+                        'roles'=>['@']
+                    ]
+                ]
+            ]
+        ];
+    }
+
     public function actionCreate()
     {
         $model = new Student();
