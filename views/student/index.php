@@ -22,7 +22,7 @@ table th,td{
         <td><?= $field->full_name; ?></td>
         <td><?= $field->address; ?></td>
         <td><?= $field->phone; ?></td>
-        <td><?= Html::a("Edit", ['student/edit', 'id' => $field->id]); ?> | <?= Html::a("Delete", ['student/delete', 'id' => $field->id]); ?></td>
+        <td><?= Html::a("Edit", ['student/edit', 'id' => $field->id]); ?> | <?= Html::a("Delete", ['student/delete', 'id' => $field->id]); ?> | <?= Html::a("View", ['student/view', 'id' => $field->id]); ?></td>
     </tr>
     <?php } ?>
 </table>

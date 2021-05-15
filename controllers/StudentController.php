@@ -46,4 +46,11 @@ class StudentController extends Controller
         
        return $this->redirect(['index']);
     } 
+
+    public function actionView($id)
+    {
+        $model = Student::findOne($id);
+        
+        return $this->render('view', ['model' => $model]);    
+    } 
 }
