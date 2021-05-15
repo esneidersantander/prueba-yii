@@ -12,8 +12,16 @@ class SitioController extends Controller
 {
     public function actionInicio(){
         $model = new FormularioForm;
-        return $this->render('inicio',['model'=>$model]);
-        
+
+        if ($model->load(Yii::$app->request->post() ) && $model->validate() ) {
+            $valorRespuesta = ($model->valora + $model->valorb);
+
+            return $this->render('inicio', ['mensaje'=>$valorRespuesta, 'model'=>$model]);
+        }
+
+
+        return $this->render('inicio',['mensaje'=>"",'model'=>$model]);
+
     }
 }
 

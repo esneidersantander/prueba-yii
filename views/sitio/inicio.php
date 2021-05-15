@@ -3,7 +3,12 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;   
 ?>
 
-Hola usuario
+<?php
+    if ($mensaje) {
+        echo Html::tag('div', Html::encode($mensaje),['class'=>'alert alert-danger']);
+    }
+?>
+
 <?php
     $formulario = ActiveForm::begin();
 ?>
