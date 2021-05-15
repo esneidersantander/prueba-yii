@@ -29,11 +29,6 @@ class StudentController extends Controller
     {
         $model = Student::find()->where(['id' => $id])->one();
  
-        // $id not found in database
-        if($model === null){
-            throw new NotFoundHttpException('The requested page does not exist.');
-        }
-         
         // update record
         if($model->load(Yii::$app->request->post()) && $model->save()){
             return $this->redirect(['index']);
@@ -41,4 +36,14 @@ class StudentController extends Controller
          
         return $this->render('edit', ['model' => $model]);
     }  
+
+    public function actionDelete($id)
+    {
+        $model = Student::findOne($id);
+        
+       // delete record
+       $model->delete();
+        
+       return $this->redirect(['index']);
+    } 
 }
