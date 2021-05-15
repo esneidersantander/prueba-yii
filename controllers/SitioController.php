@@ -5,12 +5,15 @@ use Yii;
 
 use yii\filters\AccessControl;
 use yii\web\Controller;
+use app\models\FormularioForm;
 
 
 class SitioController extends Controller
 {
     public function actionInicio(){
-        return $this->render('inicio');
+        $model = new FormularioForm;
+        return $this->render('inicio',['model'=>$model]);
+        
     }
 }
 
